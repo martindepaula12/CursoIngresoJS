@@ -9,7 +9,7 @@ function mostrar()
 	nombre = prompt("ingrese su nombre");
 
 	txtIdNombre.value = nombre;
-
+	
 
 }
 
