@@ -6,61 +6,86 @@ C.	Para hacer un contrapiso de 1m x 1m se necesitan 2 bolsas de cemento y 3 de c
 
 function Rectangulo () 
 {
-    var ancho;
     var largo;
-    var perimetro;
-    var cantidadAlamabre;
+    var ancho;
+    var hilosAlambre
+    var cantidadAlambre;
+    
 
-    ancho = txtIdLargo.value;
-    largo = txtIdAncho.value;
+    // asigno valor a la variable
+    largo = txtIdLargo.value;
+    ancho = txtIdAncho.value;
 
-    ancho = parseInt(ancho);
-    largo = parseInt(largo);
+    // parseo
+    largo = parseFloat(largo);
+    ancho = parseFloat(ancho);
 
-    perimetro = largo + largo + ancho + ancho;
+    // asigno valor a los hilos de alambre requeridos
+    hilosAlambre = 3;
 
-    cantidadAlamabre = perimetro * 3
+    // calculo de perimetro multiplicado por la cantidad de hilos de alambre a usar
+    cantidadAlambre = (largo * 2 + ancho * 2)  * hilosAlambre;
 
-    alert(cantidadAlamabre + " metros ");
+    // le dejo los dos primeros decimales despues de la coma
+    cantidadAlambre = cantidadAlambre.toFixed(2);
 
+    // muestro el resultado
+    alert("se necesitan " + cantidadAlambre + " metros de alambre ");
 
 }
 function Circulo () 
 {
     var radio;
     var perimetro;
-    var cantidadAlamabre;
-    var perimetro
-    
+    var cantidadAlambre;
+    var hilosAlambre;
+
     radio = txtIdRadio.value;
 
     radio = parseFloat(radio);
 
-    perimetro = 2 * radio * Math.PI; 
-    perimetro = Math.ceil(perimetro);
+    // asigno valor a los hilos de alambre requeridos
+    hilosAlambre = 3;
 
-    cantidadAlamabre = perimetro * 3
+    //   calculo perimetro
+     perimetro = 2 * radio * Math.PI;
 
-    alert(cantidadAlamabre + " metros ");
+    // calculo para saber cantidad de alambre a usar
+     cantidadAlambre = perimetro * hilosAlambre;
 
+  
+    // redondea al entero siguiente
+    cantidadAlambre = Math.ceil(cantidadAlambre);
+  
+    // muestro el resultado
+    alert("se necesitan " + cantidadAlambre + " metros de alambre ");
+
+  
 
 }
 function Materiales () 
 {
     var largo;
     var ancho;
-    var bolsasCemento;
     var area;
-    var bolsasCal;
+    var bolsasCal
+    var bolsasCemento;
 
-    ancho = txtIdLargo.value;
-    largo = txtIdAncho.value;
+     // asigno valor a la variable
+     largo = txtIdLargo.value;
+     ancho = txtIdAncho.value;
+ 
+     // parseo
+     largo = parseFloat(largo);
+     ancho = parseFloat(ancho);
 
-    area = largo * ancho;
+    //  calculo para sacar el area
+     area = largo * ancho;
 
-    bolsasCal = area * 3
-    bolsasCemento = area *2
+    //  multiplico el area por la cantidad de bolsas que se necesitan por metro cuadrado
+     bolsasCal = area * 3
+     bolsasCemento = area * 2
 
-    alert( "se necesitan " + bolsasCemento + " bolsas de cemento y " + bolsasCal + " bolsas de cal ");
+     alert("se necesitan " + bolsasCal + " bolsas de cal y " + bolsasCemento + " bolsas de cemento " );
     
 }

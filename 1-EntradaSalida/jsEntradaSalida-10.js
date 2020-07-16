@@ -9,13 +9,15 @@ function mostrarAumento()
 	var descuento;
 	var resultado
 
+	// tomo importe por Id
 	importe = txtIdImporte.value;
-
+	
 	importe = parseInt(importe);
 
 	descuento = importe *0.25
 
 	resultado = importe - descuento
 
+	// muestro resultado por ID en cuadro de texto
 	txtIdResultado.value = resultado;
 }
