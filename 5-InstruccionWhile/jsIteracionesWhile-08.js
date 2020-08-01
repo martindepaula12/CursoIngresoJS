@@ -4,32 +4,35 @@ sumar los que son positivos y multiplicar los negativos.*/
 function mostrar()
 {
 	var contador;
-	var numero;
+	var numeroIngresado;
 	var respuesta;
-	var sumaPositivos;
-	var multiplicacionNegativos;
+	
+	var acumuladorPositivos;
+	var acumuladorNegativos;
 	contador=0;
-	sumaPositivos=0;
-	multiplicacionNegativos=1;
+	acumuladorNegativos = 1;
+	acumuladorPositivos =  0;
 	respuesta='si';
 
 	while(respuesta == "si"){
+		numeroIngresado = prompt("ingrese un numero");
+		numeroIngresado = parseFloat(numeroIngresado);
+		while(isNaN(numeroIngresado)){
+			numeroIngresado= prompt("ingrese un numero");
+			numeroIngresado = parseInt(numeroIngresado);
+		}
+		if(numeroIngresado>=0){
+			acumuladorPositivos = acumuladorPositivos + numeroIngresado;
+		}else{
+			acumuladorNegativos = acumuladorNegativos * numeroIngresado;
+		}
 
-		numero = prompt("ingrese un numero")
-		numero = parseInt(numero);
-
-	while(isNaN(numero)){
-		numero = prompt("ingrese un numero")
-		numero = parseInt(numero);
-	}	
-
-		respuesta = prompt("desea continuar si/no");
-
-		
+		contador++;
+		respuesta = prompt("desea continuar si/no ?");
 	}
 	
 
-	txtIdSuma.value=sumaPositivos;
-	txtIdProducto.value=multiplicacionNegativos;
+	txtIdSuma.value=acumuladorPositivos;
+	txtIdProducto.value=acumuladorNegativos;
 
 }//FIN DE LA FUNCIÓN
