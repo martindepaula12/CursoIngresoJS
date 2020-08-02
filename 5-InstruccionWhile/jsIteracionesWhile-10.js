@@ -14,16 +14,74 @@ function mostrar()
 {
 	//declarar contadores y variables 
 	var respuesta;
-	var numeroIngresado;
+	var numeroIngresado = 1;
 	var sumaNegativos=0;
+	var sumaPositivos = 0;
+	var contadorPositivos = 0;
+	var contadorNegativos = 0;
+	var contadorCeros = 0;
+	var contadorPares = 0;
+	var promedioPositivos;
+	var promedioNegativos;
+	var diferenciaPositivosNegativos;
+
 
 	respuesta="si";
 
 	while(respuesta=="si")
 	{
+		numeroIngresado = prompt("ingrese un numero");
+		numeroIngresado = parseInt(numeroIngresado);
+		//numeroIngresado = parseInt(numeroIngresado);
+		console.log(numeroIngresado);
+		
+		while(isNaN(numeroIngresado) == true){
+			numeroIngresado = prompt("error, no es un numero");
+			numeroIngresado = parseInt(numeroIngresado);
+			 }
+			 
+		 
+
+			if(numeroIngresado < 0){
+				contadorNegativos++;
+				console.log("contador negativos " + contadorNegativos);
+				sumaNegativos = sumaNegativos + numeroIngresado;
+				console.log("suma negativos" + sumaNegativos);
+			 }
+			else if(numeroIngresado == 0){
+				contadorCeros++;
+				console.log("contador ceros" + contadorCeros);
+			} else if (numeroIngresado > 0) {
+				contadorPositivos++;
+				console.log("contador positivos" + contadorPositivos);
+				sumaPositivos = sumaPositivos + numeroIngresado;
+				console.log("suma positivos" + sumaPositivos);
+			}
+			 
+
+			if(numeroIngresado % 2 === 0){
+				contadorPares++;
+				console.log("contador pares" + contadorPares);
+			}
+			
 		
 		respuesta=prompt("desea continuar?");
+	 
 	}//fin del while
 
-	document.write("la suma de negativos es :"+sumaNegativos);
+	promedioPositivos = sumaPositivos / contadorPositivos;
+	promedioNegativos = sumaNegativos / contadorNegativos;
+	diferenciaPositivosNegativos = sumaPositivos - sumaNegativos;
+
+	document.write(
+	"la suma de negativos es :"+ sumaNegativos +
+	" la suma de los positivos es : "+ sumaPositivos +
+	" la cantidad de positivos es :" + contadorPositivos + 
+	" la cantidad de negativos es : " + contadorNegativos + 
+	" la cantidad de ceros es : " + contadorCeros + 
+	" la cantidad de pares es : " + contadorPares + 
+	" el prompedio de los positivos es : "+ promedioPositivos + 
+	" el promedio de los negativos es :" + promedioNegativos + 
+	" la diferencia entre positivos y negativos es :" + diferenciaPositivosNegativos
+	);
 }//FIN DE LA FUNCIÓN
