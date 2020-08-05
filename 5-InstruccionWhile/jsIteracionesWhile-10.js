@@ -38,7 +38,7 @@ function mostrar()
 		while(isNaN(numeroIngresado)){
 			numeroIngresado = prompt("error, no es un numero");
 			numeroIngresado = parseInt(numeroIngresado);
-			 }
+		}
 			 
 		 
 
@@ -47,11 +47,12 @@ function mostrar()
 				console.log("contador negativos " + contadorNegativos);
 				sumaNegativos = sumaNegativos + numeroIngresado;
 				console.log("suma negativos" + sumaNegativos);
-			 }
+			}
 			else if(numeroIngresado == 0){
 				contadorCeros++;
 				console.log("contador ceros" + contadorCeros);
-			} else {
+			} 
+			else {
 				contadorPositivos++;
 				console.log("contador positivos" + contadorPositivos);
 				sumaPositivos = sumaPositivos + numeroIngresado;
@@ -68,15 +69,21 @@ function mostrar()
 		respuesta=prompt("desea continuar?");
 	 
 	}//fin del while
-
+	if(contadorPositivos != 0){
 	promedioPositivos = sumaPositivos / contadorPositivos;
 	promedioPositivos = promedioPositivos.toFixed(2);
+	}
+
+	 if(contadorNegativos != 0){ 
 	promedioNegativos = sumaNegativos / contadorNegativos;
 	promedioNegativos = promedioNegativos.toFixed(2);
-	diferenciaPositivosNegativos = sumaPositivos - sumaNegativos;
+	}
 
+
+	diferenciaPositivosNegativos = sumaPositivos - sumaNegativos;
+	  // <br> salto de linea
 	document.write(
-	"la suma de negativos es : "+ sumaNegativos +
+	"la suma de negativos es : "+ sumaNegativos + "<br>" +
 	" la suma de los positivos es : "+ sumaPositivos +
 	" la cantidad de positivos es : " + contadorPositivos + 
 	" la cantidad de negativos es : " + contadorNegativos + 

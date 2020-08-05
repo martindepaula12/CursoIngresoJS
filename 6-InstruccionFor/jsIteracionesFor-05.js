@@ -1,6 +1,9 @@
 function mostrar()
 {
-	alert("ok");
+	for(var numero; numero != 9;){
+		numero = prompt("ingrese un numero");
+	}
+		
 
 
 
