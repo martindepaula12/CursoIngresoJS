@@ -1,128 +1,133 @@
 
 function mostrar()
 {
-	var cantidadBarbijo = 0;
-	var cantidadAlcohol = 0;
-	var cantidadJabon = 0;
 	var productoIngresado;
+	var contador = 0;
 	var precio;
 	var cantidadUnidades;
 	var marca;
 	var fabricante;
-	var precioAlcoholMasCaro = 0;
-	var unidadesAlcoholMasCaro = 0;
-	var fabricanteAlcoholMasCaro = 0;
-	var cantidadUnidadesJabon = 0;
-	var cantidadUnidadesAlcohol = 0;
-	var cantidadUnidadesBarbijo = 0;
-	var productoConMasUnidades = 0;
-	var promedioUnidadesPorCompraDelProductoConMasUnidades = 0;
-	var marcaAlcoholMasCaro;
-
-	var contador = 0;
+	var bandera = 0;
+	var marcaAlcoholMasBarato;
+	var fabricanteAlcoholMasBarato;
+	var cantidadUnidadesAlcoholMasBarato;
+	var precioAlcoholMasBarato;
+	var acumuladorUnidadesAlcohol = 0;
+	var acumuladorUnidadesBarbijo = 0;
+	var acumuladorUnidadesJabon = 0;
+	var contadorBarbijos = 0;
+	var contadorAlcohol = 0;
+	var contadorJabon = 0;
+	var productoConMasUnidades;
 
 	while(contador < 5){
-		
-		productoIngresado = prompt("ingrese producto");
-		while(productoIngresado != "barbijo" &&  productoIngresado != "alcohol" && productoIngresado != "jabon"){
-		productoIngresado= prompt("ingrese producto correcto");	
 
+		productoIngresado = prompt("ingrese prodcuto");
+
+		while(productoIngresado != "barbijo" && productoIngresado != "jabon" && productoIngresado != "alcohol"){
+			productoIngresado = prompt("error, ingrese producto correcto");
 		}
 
-		if(productoIngresado == "barbijo"){
-			cantidadBarbijo++
-			console.log("barbijo" + cantidadBarbijo);
+		while(!(isNaN(productoIngresado))){
+			productoIngresado = prompt("no puede ser un numero");
 		}
-		else if(productoIngresado == "alcohol"){
-			cantidadAlcohol++	
-			console.log("alchol " + cantidadAlcohol);
-		}
-		else{
-			cantidadJabon++
-			console.log("jabon" + cantidadJabon);
-	
-		}
-		precio = prompt("ingrese precio");
+
+		precio = prompt("ingrese precio entre 100 y 300");
 		precio = parseInt(precio);
-		while(isNaN(precio)){
-			precio = prompt("ingrese un numero");
-			precio = parseInt(precio);
-		} 
-		while (precio < 100 ||  precio >300){
-			precio = prompt("ingrese un precio correcto");
+
+		while(precio < 100 || precio > 300 || isNaN(precio)){
+			precio = prompt("error, ingrese precio");
 			precio = parseInt(precio);
 		}
 
-		cantidadUnidades = prompt("ingrese cantidad de unidades");
+		cantidadUnidades = prompt("ingrese cantidad unidades");
 		cantidadUnidades = parseInt(cantidadUnidades);
-		
-		while(isNaN(cantidadUnidades)){
-			cantidadUnidades = prompt("ingrese un numero de unidades");
-			cantidadUnidades = parseInt(cantidadUnidades);
-		}
-		while(cantidadUnidades <= 0 || cantidadUnidades >1000){
-			cantidadUnidades = prompt("ingrese una cantidad de unidades correcta");
+
+		while(cantidadUnidades < 1 || cantidadUnidades > 1000 || isNaN(cantidadUnidades)){
+			cantidadUnidades = prompt("error, ingrese cantidad unidades correcta");
 			cantidadUnidades = parseInt(cantidadUnidades);
 		}
 
 		marca = prompt("ingrese marca");
+
 		fabricante = prompt("ingrese fabricante");
 
-		//punto a
-		if(precio > precioAlcoholMasCaro && productoIngresado == "alcohol"){
-			precioAlcoholMasCaro = precio;
-			console.log("precio alc mas caro " + precioAlcoholMasCaro);
-			unidadesAlcoholMasCaro = cantidadUnidades;
-			console.log("unidades " + unidadesAlcoholMasCaro);
-			fabricanteAlcoholMasCaro = fabricante;
-			console.log("fabricante " + fabricanteAlcoholMasCaro);
-			marcaAlcoholMasCaro = marca;
+		if(bandera == 0 && productoIngresado == "alcohol"){
+			bandera++;
+
+			marcaAlcoholMasBarato = marca;
+			console.log("marca " + marcaAlcoholMasBarato);
+			fabricanteAlcoholMasBarato = fabricante;
+			console.log("fabricante a " + fabricanteAlcoholMasBarato);
+			cantidadUnidadesAlcoholMasBarato = cantidadUnidades;
+			console.log("cant un alc mas b " + cantidadUnidadesAlcoholMasBarato);
+			precioAlcoholMasBarato = precio;
+			console.log("precio alc mas b " + precioAlcoholMasBarato);
 
 		}
-	
-	
-		//punto b y z
 
-		if(productoIngresado == "jabon"){
-			cantidadUnidadesJabon = cantidadUnidadesJabon + cantidadUnidades;
-			console.log("unidades jabon "+ cantidadUnidadesJabon);
+		if(precio < precioAlcoholMasBarato && productoIngresado == "alcohol"){
+			marcaAlcoholMasBarato = marca;
+			console.log("marca 2 " +marcaAlcoholMasBarato);
+			fabricanteAlcoholMasBarato = fabricante;
+			console.log("fab 2 " + fabricanteAlcoholMasBarato);
+			cantidadUnidadesAlcoholMasBarato = cantidadUnidades;
+			console.log("cant un alc 2 " + cantidadUnidadesAlcoholMasBarato);
+			precioAlcoholMasBarato = precio;
+			console.log("precio alc 2 " + precioAlcoholMasBarato);
+		}
+
+		if(productoIngresado == "alcohol"){
+			acumuladorUnidadesAlcohol = acumuladorUnidadesAlcohol + cantidadUnidades;
+			console.log("acum un alc " + acumuladorUnidadesAlcohol);
+			contadorAlcohol++;
+			console.log("cont alc " + contadorAlcohol);
 		} 
 		else if(productoIngresado == "barbijo"){
-			cantidadUnidadesBarbijo = cantidadUnidadesBarbijo + cantidadUnidades;
-			console.log("cant un barbijo " + cantidadUnidadesBarbijo);
-		}
+			acumuladorUnidadesBarbijo = acumuladorUnidadesBarbijo + cantidadUnidades;
+			console.log("acum barbijos " + acumuladorUnidadesBarbijo);
+			contadorBarbijos++;
+			console.log("cont bar " + contadorBarbijos);
+		} 
 		else{
-			cantidadUnidadesAlcohol = cantidadUnidadesAlcohol + cantidadUnidades;
-			console.log("cant un alcohol " + cantidadUnidadesAlcohol);
+			acumuladorUnidadesJabon = acumuladorUnidadesJabon + cantidadUnidades;
+			console.log("acum jabon " + acumuladorUnidadesJabon);
+			contadorJabon++;
+			console.log("cont jabon " + contadorJabon);
 		}
+
 
 		contador++;
-		
-		
 	}
-	if(cantidadUnidadesAlcohol > cantidadUnidadesBarbijo && cantidadUnidadesAlcohol > cantidadUnidadesJabon){
-		productoConMasUnidades = "Alcohol";
 
-	}
-	else if(cantidadUnidadesJabon > cantidadUnidadesBarbijo && cantidadUnidadesAlcohol > cantidadUnidadesAlcohol){
+	if(acumuladorUnidadesAlcohol > acumuladorUnidadesBarbijo && 
+		acumuladorUnidadesAlcohol > acumuladorUnidadesJabon){
+			productoConMasUnidades == "alcohol";
+	} 
+	else if(acumuladorUnidadesBarbijo > acumuladorUnidadesJabon && 
+			acumuladorUnidadesBarbijo > acumuladorUnidadesAlcohol){
+				productoConMasUnidades == "barbijo";	
+
+	} else{
 		productoConMasUnidades = "jabon";
-
-	}else if(cantidadUnidadesBarbijo > cantidadUnidadesJabon && cantidadUnidadesBarbijo > cantidadUnidadesAlcohol){
-		productoConMasUnidades = "barbijo";
 	}
 
-	if(productoConMasUnidades == "Alcohol" && cantidadAlcohol != 0){
-		promedioUnidadesPorCompraDelProductoConMasUnidades = cantidadUnidadesAlcohol / cantidadAlcohol;
-	} else if(productoConMasUnidades == "jabon" && cantidadJabon != 0){
-		promedioUnidadesPorCompraDelProductoConMasUnidades = cantidadUnidadesJabon / cantidadJabon;
-	}else if (productoConMasUnidades == "barbijo" && cantidadBarbijo != 0 ){
-		promedioUnidadesPorCompraDelProductoConMasUnidades = cantidadUnidadesBarbijo / cantidadBarbijo;
+	if(productoConMasUnidades == "alcohol" && contadorAlcohol !=0){
+		promedioUnidadesPorCompra = acumuladorUnidadesAlcohol / contadorAlcohol;
+		
 	}
+	else if(productoConMasUnidades == "barbijo" && contadorBarbijos != 0){
+		promedioUnidadesPorCompra = acumuladorUnidadesBarbijo / contadorBarbijos;
+	} 
+	else if(productoConMasUnidades == "jabon" && contadorJabon != 0){
+		promedioUnidadesPorCompra = acumuladorUnidadesJabon / contadorJabon;
+	} else{
+		promedioUnidadesPorCompra = alert("no se ingreso ningun producto");
+	}
+	console.log("prom " + promedioUnidadesPorCompra);
 
-	document.write(
-	"el alchol mas barato es: " + marcaAlcoholMasCaro + "<br>" + 
-	"la cantidad de unidades del alcohol mas "
-	)
 	
+
+
 	
 }
