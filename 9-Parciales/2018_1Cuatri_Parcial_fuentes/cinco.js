@@ -70,9 +70,7 @@ function mostrar()
             bandera2++;
             edadHombreMasViejo = edad;
             nombreHombresMasViejo = nombre;
-        }
-
-        if(edad > edadHombreMasViejo && sexo == "m"){
+        }else if(edad > edadHombreMasViejo && sexo == "m"){
             edadHombreMasViejo = edad;
             nombreHombresMasViejo = nombre;
         }
